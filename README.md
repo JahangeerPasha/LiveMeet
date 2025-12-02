@@ -1,145 +1,74 @@
-# LiveMeet
-LiveMeet is a real-time video conferencing platform built using WebRTC, Socket.io, and Node.js.
-The platform enables peer-to-peer audio/video communication, dynamic room creation, and real-time signaling, while ensuring reliable connectivity using STUN servers for NAT traversal.
+# LiveMeet – Real-Time Video Conferencing Platform
 
-This project demonstrates expertise in real-time communication, networking concepts, WebRTC internals, and scalable event-driven backend systems.
+LiveMeet is a real-time video conferencing application built using **WebRTC**, **Socket.io**, **Node.js**, and **Express.js**.  
+It enables seamless peer-to-peer video/audio calls, dynamic room creation, and real-time communication with extremely low latency.
 
-This project demonstrates strong understanding of:
+---
 
-Real-time communication systems
+## 🚀 Features
 
-Signaling mechanisms
+### 🔹 Real-Time Video & Audio Calls
+- Powered by **WebRTC** for direct peer-to-peer media streaming.
+- Handles live audio/video sharing with smooth connection handling.
 
-Peer connection lifecycle
+### 🔹 STUN Server Support  
+- Integrated **Google STUN servers** to enable reliable **NAT traversal**.
+- Ensures stable connectivity across different networks.
 
-Scalable event-driven backend architecture
+### 🔹 Socket.io Signaling
+- Real-time room creation and joining.
+- WebSocket-based event communication:
+  - User joined
+  - Call requests
+  - Media updates
+  - Disconnections  
 
- Features
+### 🔹 Dynamic Peer Connection Management
+- Automatically handles:
+  - New peers joining
+  - Peers leaving
+  - ICE candidate exchange
+  - Stream updates
 
-✔ Peer-to-peer video calling using WebRTC
-✔ STUN-based NAT traversal for stable connectivity
-✔ Room-based video calls (auto-generate & join)
-✔ Real-time signaling using Socket.io
-✔ Dynamic peer connection management
-✔ Responsive UI for smooth user experience
-✔ Low-latency media streaming
-✔ Automatic handling of new participants and disconnections
+### 🔹 Responsive UI
+- Clean and simple UI for easy room joining and interaction.
+- Mobile-friendly layout supporting both portrait/landscape usage.
 
- Architecture
+---
 
-LiveMeet follows a hybrid architecture:
+## 🛠️ Tech Stack
 
-1️⃣ WebRTC (Media Layer)
+### **Frontend**
+- HTML5, CSS3, JavaScript
+- WebRTC API (getUserMedia, RTCPeerConnection)
+- Responsive UI design
 
-Handles audio/video capture
+### **Backend**
+- Node.js  
+- Express.js  
+- Socket.io (WebSocket communication)
 
-Establishes direct P2P connections
+### **Real-Time Communication**
+- WebRTC for video/audio  
+- STUN servers for NAT traversal  
+- Peer-to-peer streaming  
 
-Uses ICE candidates for connection optimization
+### **Tools & Concepts**
+- ICE Candidates  
+- SDP Exchange  
+- WebSocket Rooms  
+- Event-driven architecture  
 
-2️⃣ Socket.io (Signaling Layer)
+---
 
-Used ONLY for exchanging connection metadata:
+## 🧩 How It Works (Architecture)
 
-Offer / Answer (SDP)
+1. User enters a room ID.
+2. Socket.io connects them to a signaling room.
+3. WebRTC performs:
+   - Offer/Answer exchange
+   - ICE candidate communication
+4. Peers establish a **direct P2P connection**.
+5. Video/audio streams flow **directly** between devices.
 
-ICE candidates
 
-Join/leave notifications
-
-Event-driven communication between clients
-
-3️⃣ Node.js + Express.js (Backend Server)
-
-Hosts signaling server
-
-Manages room logic
-
-Handles event broadcasting
-
-Lightweight real-time message handling
-
-🛰️ Tech Stack
-Frontend
-
-HTML
-
-CSS
-
-JavaScript
-
-WebRTC API
-
-MediaDevices API
-
-Backend
-
-Node.js
-
-Express.js
-
-Socket.io
-
-Networking
-
-STUN (Google STUN Server)
-
-ICE Framework
-
-Peer Connection API
-
-How It Works
-1️⃣ User creates or joins a room
-
-Client sends a join-room event to the server.
-
-2️⃣ Server broadcasts signaling events
-
-Notifies existing users
-
-Exchanges SDP offers/answers
-
-Shares ICE candidates
-
-3️⃣ WebRTC establishes a P2P connection
-
-Browser-to-browser communication begins:
-
-No heavy backend load
-
-Low latency
-
-4️⃣ Video + Audio stream starts
-
-Media is streamed directly through P2P once ICE negotiation succeeds.
-
- Key Concepts Implemented
-✔ WebRTC PeerConnection Lifecycle
-
-Offer → Answer → ICE Exchange → Connected
-
-✔ STUN Server Integration
-
-Ensures:
-
-NAT traversal
-
-Accurate public IP discovery
-
-Stable connectivity across networks
-
-✔ Real-Time Signaling with Socket.io
-
-Handles:
-
-User joining
-
-Broadcasting offers/answers
-
-ICE candidate exchange
-
-✔ Dynamic Stream Handling
-
-Automatically attach new video streams
-
-Remove streams when a user disconnects

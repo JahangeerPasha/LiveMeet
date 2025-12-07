@@ -27,6 +27,7 @@ export default function History() {
                 setMeetings(history);
             } catch {
                 // IMPLEMENT SNACKBAR
+                //console.error("Failed to fetch history:", err);
             }
         }
 

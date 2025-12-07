@@ -29,7 +29,7 @@ export default function VideoMeetComponent() {
     let socketIdRef = useRef();
 
     let localVideoref = useRef();
-
+    let lobbyVideoRef = useRef();
     let [videoAvailable, setVideoAvailable] = useState(true);
 
     let [audioAvailable, setAudioAvailable] = useState(true);
@@ -68,7 +68,7 @@ export default function VideoMeetComponent() {
         console.log("HELLO")
         getPermissions();
 
-    })
+    }, []);
 
     let getDislayMedia = () => {
         if (screen) {
@@ -111,9 +111,14 @@ export default function VideoMeetComponent() {
                 const userMediaStream = await navigator.mediaDevices.getUserMedia({ video: videoAvailable, audio: audioAvailable });
                 if (userMediaStream) {
                     window.localStream = userMediaStream;
-                    if (localVideoref.current) {
-                        localVideoref.current.srcObject = userMediaStream;
-                    }
+                    if (askForUsername && lobbyVideoRef.current) {
+    lobbyVideoRef.current.srcObject = userMediaStream;
+}
+
+if (!askForUsername && localVideoref.current) {
+    localVideoref.current.srcObject = userMediaStream;
+}
+
                 }
             }
         } catch (error) {
@@ -451,24 +456,56 @@ export default function VideoMeetComponent() {
 
             {askForUsername === true ?
 
-                <div>
+                // <div>
 
 
-                    <h2>Enter into Lobby </h2>
-                    <TextField id="outlined-basic" label="Username" value={username} onChange={e => setUsername(e.target.value)} variant="outlined" />
-                    <Button variant="contained" onClick={connect}>Connect</Button>
+                //     <h2>Enter into Lobby </h2>
+                //     <TextField id="outlined-basic" label="Username" value={username} onChange={e => setUsername(e.target.value)} variant="outlined" />
+                //     <Button variant="contained" onClick={connect}>Connect</Button>
 
 
-                    <div>
-                        <video ref={localVideoref} autoPlay muted></video>
-                    </div>
+                //     <div>
+                //         <video ref={lobbyVideoRef} autoPlay muted></video>
+                //     </div>
 
-                </div> :
+                // </div> :
+                <div className={styles.lobbyContainer}>
+
+        <div className={styles.lobbyCard}>
+            <h2 className={styles.lobbyTitle}>Enter the Lobby</h2>
+
+            <TextField 
+                fullWidth
+                label="Username"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+                variant="outlined"
+                className={styles.usernameInput}
+            />
+
+            <Button 
+                variant="contained" 
+                className={styles.connectButton}
+                onClick={connect}
+            >
+                Connect
+            </Button>
+        </div>
+
+        <video 
+            ref={lobbyVideoRef} 
+            autoPlay 
+            muted 
+            className={styles.lobbyVideo}
+        ></video>
+
+    </div> :
+
 
 
                 <div className={styles.meetVideoContainer}>
 
-                    {showModal ? <div className={styles.chatRoom}>
+                    {/* {showModal ? <div className={styles.chatRoom}>
 
                         <div className={styles.chatContainer}>
                             <h1>Chat</h1>
@@ -496,7 +533,52 @@ export default function VideoMeetComponent() {
 
 
                         </div>
-                    </div> : <></>}
+                    </div> : <></>} */}
+                    {showModal ? (
+    <div className={styles.chatRoom}>
+
+        <div className={styles.chatHeader}>Chat</div>
+
+        <div className={styles.chatMessages}>
+            {messages.length > 0 ? (
+                messages.map((item, index) => (
+                    <div
+                        key={index}
+                        className={
+                            item.sender === username
+                                ? styles.myMessage
+                                : styles.otherMessage
+                        }
+                    >
+                        <p className={styles.senderName}>{item.sender}</p>
+                        <p>{item.data}</p>
+                    </div>
+                ))
+            ) : (
+                <p className={styles.noMessages}>No messages yet</p>
+            )}
+        </div>
+
+        <div className={styles.chatInputArea}>
+            <TextField
+                fullWidth
+                variant="outlined"
+                label="Type a message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+            />
+            <Button
+                variant="contained"
+                className={styles.sendBtn}
+                onClick={sendMessage}
+            >
+                SEND
+            </Button>
+        </div>
+
+    </div>
+) : null}
+
 
 
                     <div className={styles.buttonContainers}>

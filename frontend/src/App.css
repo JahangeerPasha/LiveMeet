@@ -59,7 +59,7 @@
   width: auto;
 }
 
-.navBar {
+/* .navBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,4 +93,61 @@
   width: 30vw;
   height: auto;
   border-radius: 20px;
+} */
+
+body {
+  background: linear-gradient(135deg, #e2efff, #f7faff);
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
 }
+
+/* NAVBAR */
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: transparent;
+}
+
+/* MAIN CONTAINER */
+.meetContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+  padding: 0 60px;
+}
+
+/* LEFT PANEL */
+.leftPanel {
+  flex: 1;
+}
+
+.leftPanel h2 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #1a2b4c;
+  max-width: 450px;
+  line-height: 1.4;
+}
+
+/* INPUT CARD */
+.inputCard {
+  margin-top: 20px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 12px;
+}
+
+/* RIGHT PANEL */
+.rightPanel img {
+  width: 450px;
+  filter: drop-shadow(0px 6px 15px rgba(0,0,0,0.15));
+}
+

@@ -26,7 +26,7 @@ function HomeComponent() {
 
                 <div style={{ display: "flex", alignItems: "center" }}>
 
-                    <h2>Apna Video Call</h2>
+                    <h2>LiveMeet</h2>
                 </div>
 
                 <div style={{ display: "flex", alignItems: "center" }}>
@@ -51,7 +51,7 @@ function HomeComponent() {
             </div>
 
 
-            <div className="meetContainer">
+            {/* <div className="meetContainer">
                 <div className="leftPanel">
                     <div>
                         <h2>Providing Quality Video Call Just Like Quality Education</h2>
@@ -67,7 +67,41 @@ function HomeComponent() {
                 <div className='rightPanel'>
                     <img srcSet='/logo3.png' alt="" />
                 </div>
-            </div>
+            </div> */}
+            <div className="meetContainer">
+
+    <div className="leftPanel">
+
+        <h2>
+            Providing Quality Video Calls <br />
+            Just Like Quality Education
+        </h2>
+
+        <div className="inputCard">
+            <TextField
+                fullWidth
+                onChange={e => setMeetingCode(e.target.value)}
+                label="Enter Meeting Code"
+                variant="outlined"
+            />
+
+            <Button 
+                onClick={handleJoinVideoCall} 
+                variant="contained"
+                style={{ padding: "12px 24px", borderRadius: "10px" }}
+            >
+                Join
+            </Button>
+        </div>
+
+    </div>
+
+    <div className="rightPanel">
+        <img src="/logo3.png" alt="Meeting Illustration" />
+    </div>
+
+</div>
+
         </>
     )
 }

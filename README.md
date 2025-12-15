@@ -5,7 +5,7 @@ LiveMeet is a web-based real-time video conferencing application that allows use
 ## 🌐 Live Demo
 
 🔗 **Deployed Link:**  
-               https://livemeet-frontend.onrender.com
+              - https://livemeet-frontend.onrender.com
 
 > Note: The application may take a few seconds to load initially as it is deployed on a free hosting service.
 
@@ -81,3 +81,12 @@ The backend manages users and signaling, while media streams flow directly betwe
 - **Socket.IO** is used for signaling (user join/leave, SDP, ICE exchange).
 - **WebRTC** handles peer-to-peer audio and video streaming.
 - **STUN servers** are used for NAT traversal.
+
+---
+
+## 🔮 Future Improvements
+
+- Add TURN servers for better connectivity in restrictive networks
+- Introduce SFU architecture for large group calls
+- Persist chat messages in the database
+- Add meeting recording functionality

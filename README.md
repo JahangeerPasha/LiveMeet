@@ -10,7 +10,6 @@ https://livemeet-frontend.onrender.com
 > Note: The application may take a few seconds to load initially as it is deployed on a free hosting service.
 
 ---
----
 
 ## 🚀 Features
 

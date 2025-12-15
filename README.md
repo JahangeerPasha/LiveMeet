@@ -1,7 +1,7 @@
 # LiveMeet – Real-Time Video Conferencing Platform
 
-LiveMeet is a real-time video conferencing application built using **WebRTC**, **Socket.io**, **Node.js**, and **Express.js**.  
-It enables seamless peer-to-peer video/audio calls, dynamic room creation, and real-time communication with extremely low latency.
+LiveMeet is a real-time video conferencing application built using **WebRTC**, **Socket.io**, **Node.js**, **React.js** and **Express.js**.  
+It enables seamless peer-to-peer video calls, dynamic room creation, and real-time communication.
 
 ---
 
